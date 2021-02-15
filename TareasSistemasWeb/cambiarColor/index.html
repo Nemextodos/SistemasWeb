@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Cambiar el color del elemento</title>
+        <script type="text/javascript" src="index.js"></script>
+    </head>
+    <body>
+        <h3 style="align-self: 'center';">Elige un color</h3>
+        <form>
+            <input type="radio" onclick="cambiarColor('verde')" name="rbColor">Verde</input><br>
+            <input type="radio" onchange="cambiarColor('rojo')" name="rbColor">Rojo</input><br>
+            <input type="radio" onchange="cambiarColor('azul')" name="rbColor">Azul</input><br>
+            <input type="radio" onchange="cambiarColor('amarillo')" name="rbColor">Amarillo</input>
+        </form>
+        <div style="width: 200px; height: 200px; border-radius: 20; background-color: brown;" id="div_color">
+
+        </div>
+    </body>
+</html>
