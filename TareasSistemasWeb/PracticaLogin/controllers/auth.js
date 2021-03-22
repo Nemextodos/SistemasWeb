@@ -60,9 +60,18 @@ exports.login = async (req,res) => {
                     ),
                     httpOnly: true
                 }
+                db.query('SELECT nombre FROM users WHERE email = ?',[email], (error,results) => {
+                   try{
+                    req.session.username = results[0].nombre;
+                    
+                   }catch(error){
+                       console.log(error);
+                   }
+                })
                 req.session.isAuth = true;
                 res.cookie('jwt',token,cookieOptions);
                 res.status(200).redirect('/');
+                console.log(req.session.username);
                 
             }
         })
@@ -72,8 +81,11 @@ exports.login = async (req,res) => {
 }
 exports.logout = (req,res) =>{
     req.session.destroy((err) => {
-        if(err) throw err;
-        ress.redirect('/login',{message:'has cerrado sesion'})
+        if(err) {throw err;
+        }
     })
+    res.render('login',{message:'has cerrado sesion'});
+    req.session.username="";
+    console.log('entro');
 }
 

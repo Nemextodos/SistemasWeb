@@ -5,6 +5,7 @@ const router = express.Router();
 router.get('/', (req,res) => {
        if(req.session.isAuth){
         res.render('index');
+        console.log(req.session.username);
        }else{
            res.status(401).render('login',{message: 'No has iniciado sesion'})
        }
